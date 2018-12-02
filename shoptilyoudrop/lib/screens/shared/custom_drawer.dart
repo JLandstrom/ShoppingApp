@@ -23,21 +23,21 @@ class CustomDrawer extends StatelessWidget{
             ),
           ),
           ListTile(
-            title: Text('My Profile'),
+            title: Text('Home'),
             onTap: () {
               Navigator.pop(context);
             },
           ),
           Divider(height: 4.0,),
           ListTile(
-            title: Text('Preferences'),
+            title: Text('My profile'),
             onTap: () {
               Navigator.pop(context);
             },
           ),
           Divider(height: 4.0,),
           ListTile(
-            title: Text('Logout'),
+            title: Text('Log out'),
             onTap: () {
               Navigator.pop(context);
               SessionManager().signOut(context);
