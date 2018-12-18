@@ -8,22 +8,27 @@ import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 
 import 'package:shoptilyoudrop/main.dart';
+import 'package:shoptilyoudrop/utils/service_locator.dart';
 
 void main() {
-  testWidgets('Counter increments smoke test', (WidgetTester tester) async {
-    // Build our app and trigger a frame.
-    await tester.pumpWidget(new MyApp());
+  testWidgets('Test ServiceLocator', (WidgetTester tester) async {
+    ServiceLocator.register<ITestClass>(new TestClass());
 
-    // Verify that our counter starts at 0.
-    expect(find.text('0'), findsOneWidget);
-    expect(find.text('1'), findsNothing);
+    var counter = ServiceLocator.resolve<ITestClass>();
+    var sum = counter.add(1, 2);
 
-    // Tap the '+' icon and trigger a frame.
-    await tester.tap(find.byIcon(Icons.add));
-    await tester.pump();
-
-    // Verify that our counter has incremented.
-    expect(find.text('0'), findsNothing);
-    expect(find.text('1'), findsOneWidget);
+    expect(3, sum);
   });
+}
+
+abstract class ITestClass{
+  int add(int first, int second);
+}
+
+class TestClass extends ITestClass{
+  @override
+  int add(int first, int second) {
+    return first + second;
+  }
+
 }

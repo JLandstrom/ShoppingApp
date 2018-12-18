@@ -1,12 +1,14 @@
 import 'package:flutter/material.dart';
-import 'package:shoptilyoudrop/manager/session_manager.dart';
+import 'package:shoptilyoudrop/app_state_container.dart';
+import 'package:shoptilyoudrop/routes.dart';
 
 class CustomDrawer extends StatelessWidget{
-  final String _username = SessionManager().getUserDetails().username;
-  final String _email = SessionManager().getUserDetails().email;
+  CustomDrawer();
 
   @override
   Widget build(BuildContext context){
+    var container = AppStateContainer.of(context);
+    var user = container.state.user;
     return new Drawer(
       child: ListView(
         padding: EdgeInsets.zero,
@@ -15,17 +17,18 @@ class CustomDrawer extends StatelessWidget{
             decoration: BoxDecoration(
               color: Colors.green[800]
             ),
-            accountName: new Text(_username),
-            accountEmail: new Text(_email),
+            accountName: new Text(user.displayName ?? ""),
+            accountEmail: new Text(user.email),
             currentAccountPicture: new CircleAvatar(
                 backgroundColor: Colors.white,
-                child: new Text(_username.substring(0,1))
+                child: new Text((user.displayName ?? "").length > 0 ? user.displayName.substring(0,1) : "")
             ),
           ),
           ListTile(
             title: Text('Home'),
             onTap: () {
               Navigator.pop(context);
+              Navigator.of(context).pushReplacementNamed(Routes.homePage);
             },
           ),
           Divider(height: 4.0,),
@@ -38,9 +41,10 @@ class CustomDrawer extends StatelessWidget{
           Divider(height: 4.0,),
           ListTile(
             title: Text('Log out'),
-            onTap: () {
+            onTap: () async {
               Navigator.pop(context);
-              SessionManager().signOut(context);
+              await container.signOut();
+              Navigator.of(context).pushReplacementNamed(Routes.authPage);
             },
           ),
         ],

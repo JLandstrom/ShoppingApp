@@ -1,45 +1,43 @@
-import 'package:flutter/material.dart';
-import 'dart:async';
+// import 'package:firebase_auth/firebase_auth.dart';
+// import 'package:flutter/material.dart';
+// import 'package:shoptilyoudrop/model/signin_model.dart';
+// import 'package:shoptilyoudrop/model/signup_model.dart';
+// import 'dart:async';
+// import 'package:shoptilyoudrop/utils/constants.dart';
+// import 'package:shoptilyoudrop/model/user.dart';
 
-import 'package:shared_preferences/shared_preferences.dart';
-import 'package:shoptilyoudrop/utils/constants.dart';
-import 'package:shoptilyoudrop/model/user.dart';
+// class SessionManager{
+//   final FirebaseAuth _firebaseAuth = FirebaseAuth.instance;
+  
+//   static final SessionManager _sessionManager = new SessionManager._internal();
+  
+//   factory SessionManager(){
+//     return _sessionManager;
+//   }
 
-class SessionManager{
-  static final SessionManager _sessionManager = new SessionManager._internal();
+//   SessionManager._internal();
 
-  factory SessionManager(){
-    return _sessionManager;
-  }
 
-  SessionManager._internal();
+//   Future<String> signIn(SignInModel signInModel) async {
+//     FirebaseUser user = await _firebaseAuth.signInWithEmailAndPassword(email: signInModel.email, password: signInModel.password);
+//     return user.uid;
+//   }
 
-  User _user;
-  final Future<SharedPreferences> _preferences = SharedPreferences.getInstance();
+//   Future<String> signUp(SignUpModel signUpModel) async {
+//     FirebaseUser user = await _firebaseAuth.createUserWithEmailAndPassword(email: signUpModel.email, password: signUpModel.password);
+//     user.updateProfile(new UpdateUserInfo())
+//   }
 
-  Future<void> setToken(String token) async {
-    final SharedPreferences preferences = await _preferences;
-    preferences.setString(Constants.Authorization.AuthToken, token);
-  }
+//   Future<FirebaseUser> getUser(User user) async {
+//     return await _firebaseAuth.currentUser();
+//   }
 
-  Future<String> getToken() async {
-    final SharedPreferences preferences = await _preferences;
-    return preferences.getString(Constants.Authorization.AuthToken);
-  }
+//   User getUserDetails(){
+//     return _user;
+//   }
 
-  void setUserDetails(User user){
-    _user = user;
-  }
+//   Future<void> signOut(BuildContext context) async {
+//     FireBase
+//   }
 
-  User getUserDetails(){
-    return _user;
-  }
-
-  Future<void> signOut(BuildContext context) async {
-    final SharedPreferences preferences = await _preferences;
-    preferences.setString(Constants.Authorization.AuthToken, null);
-    _user = null;
-    Navigator.of(context).pushReplacementNamed('/');
-  }
-
-}
+// }

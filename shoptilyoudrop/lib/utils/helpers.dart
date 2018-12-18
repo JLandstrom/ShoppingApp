@@ -7,7 +7,7 @@ class Helpers{
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[ new Text(message) ]
         ),
-      duration: duration
+      duration: new Duration(seconds: duration)
     ));
   }
 }
