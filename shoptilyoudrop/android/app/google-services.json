@@ -1,0 +1,42 @@
+{
+  "project_info": {
+    "project_number": "388682795786",
+    "firebase_url": "https://shoppingapplication-a3f80.firebaseio.com",
+    "project_id": "shoppingapplication-a3f80",
+    "storage_bucket": "shoppingapplication-a3f80.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:388682795786:android:1afc554986465afb",
+        "android_client_info": {
+          "package_name": "com.example.shoptilyoudrop"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "388682795786-av0g53idalldf68vmcukcv4seeqpokj3.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyApn4xrdHBAlJ8m5hGK4_gWXH_XY_-yW4s"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

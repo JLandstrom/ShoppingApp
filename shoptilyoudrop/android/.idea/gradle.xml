@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="GradleSettings">
+    <option name="linkedExternalProjectsSettings">
+      <GradleProjectSettings>
+        <option name="distributionType" value="DEFAULT_WRAPPED" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$" />
+        <option name="modules">
+          <set>
+            <option value="C:/Flutter SDK/flutter_windows_v0.7.3-beta/flutter/.pub-cache/hosted/pub.dartlang.org/firebase_auth-0.6.6/android" />
+            <option value="C:/Flutter SDK/flutter_windows_v0.7.3-beta/flutter/.pub-cache/hosted/pub.dartlang.org/firebase_core-0.2.5+1/android" />
+            <option value="C:/Flutter SDK/flutter_windows_v0.7.3-beta/flutter/.pub-cache/hosted/pub.dartlang.org/shared_preferences-0.4.3/android" />
+            <option value="$PROJECT_DIR$" />
+            <option value="$PROJECT_DIR$/app" />
+          </set>
+        </option>
+        <option name="resolveModulePerSourceSet" value="false" />
+      </GradleProjectSettings>
+    </option>
+  </component>
+</project>

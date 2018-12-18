@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
-import 'package:shoptilyoudrop/manager/session_manager.dart';
-import 'package:shoptilyoudrop/model/user.dart';
+import 'package:shoptilyoudrop/app_state_container.dart';
+import 'package:shoptilyoudrop/routes.dart';
 import 'package:shoptilyoudrop/screens/shared/custom_appbar.dart';
 import 'package:shoptilyoudrop/screens/shared/custom_drawer.dart';
 
 class HomePage extends StatefulWidget {
-  static final String PageName = "home";
+
   HomePage({Key key}) : super(key:key);
 
   @override
@@ -14,7 +14,6 @@ class HomePage extends StatefulWidget {
 }
 
 class HomePageState extends State<HomePage>{
-  final User user =  SessionManager().getUserDetails();
 
   @override
   Widget build(BuildContext context){
@@ -92,6 +91,7 @@ class HomePageState extends State<HomePage>{
                   ]
               ),
             ),
+            onTap: () => _navigate(Routes.categoriesOverview)
           ),
           _buildTile(
             Padding
@@ -182,5 +182,9 @@ class HomePageState extends State<HomePage>{
             child: child
         )
     );
+  }
+
+  _navigate(String route) {
+    Navigator.of(context).pushNamed(route);
   }
 }

@@ -1,4 +1,5 @@
 import 'dart:async';
+import 'package:shoptilyoudrop/model/signup_model.dart';
 import 'package:shoptilyoudrop/network/http_api_client.dart';
 import 'package:shoptilyoudrop/utils/constants.dart';
 import 'package:shoptilyoudrop/network/http_utils.dart';
@@ -28,7 +29,7 @@ class UserService{
       return null;
     }
     var headers = _buildHeaders();
-    var body = _buildBody(username, password);
+    var body = _buildLoginBody(username, password);
     try{
       var authenticationResponse = await _apiClient.post("/api/Login/", headers, body);
       if(HttpUtils.IsOkResponse(authenticationResponse.statusCode)){
@@ -66,16 +67,42 @@ class UserService{
     return null;
   }
 
+  Future<bool> signUp(SignUpModel signUpModel) async {
+    _latestError = "";
+
+    var headers = _buildHeaders();
+    var body = _buildCreationBody(signUpModel.email, signUpModel.displayName, signUpModel.password);
+
+    try{
+      var response = await _apiClient.post("api/Account/", headers, body);
+      if(HttpUtils.IsOkResponse(response.statusCode))
+        return true;
+    }catch(exception){
+      //Log(exception)
+      _latestError = Constants.Error.NetworkError;
+    }
+    return false;
+  }
+
   Map _buildHeaders() {
     Map headers = new Map<String, String>();
     headers["Content-Type"] = "Application/json; charset=utf-8";
     return headers;
   }
 
-  Map _buildBody(String username, String password) {
+  Map _buildLoginBody(String username, String password) {
     Map body = new Map<String, String>();
     body["email"] = username;
     body["password"] = password;
+    return body;
+  }
+
+  Map _buildCreationBody(String email, String username, String password ) {
+    Map body = new Map<String, String>();
+    body["email"] = username;
+    body["username"] = username;
+    body["password"] = password;
+    body["role"] = "Admin";
     return body;
   }
 }
